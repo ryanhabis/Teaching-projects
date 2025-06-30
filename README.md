@@ -16,7 +16,7 @@
 📌 **Tech:** HTML, CSS, JavaScript  
 🎯 **Goal:** DOM manipulation & event handling.  
 💡 **Fun Twist:** Let them create and download their own memes.  
-📂 [View Project Template](./web/meme-generator)  
+📂 [View Project Template](./web/meme_generator)  
 
 ### 3. **Cookie Clicker Game**  
 📌 **Tech:** JavaScript (Events, Counters)  
