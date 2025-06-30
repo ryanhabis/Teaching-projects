@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🍪 Cookie Clicker!</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Cookie Clicker</h1>
+    <div class="stats">
+      <p>Cookies: <span id="cookies">0</span></p>
+      <p>Per Second: <span id="cps">0</span></p>
+    </div>
+    <button id="cookie-btn">🍪</button>
+    <div class="upgrades">
+      <h2>Upgrades</h2>
+      <button class="upgrade" data-cost="10" data-cps="1">
+        Grandma 👵 (+1 CPS) - Cost: 10 cookies
+      </button>
+      <button class="upgrade" data-cost="50" data-cps="2">
+        Oven 🏭 (+2 CPS) - Cost: 50 cookies
+      </button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

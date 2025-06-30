@@ -1,16 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Meme Generator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🤣 Meme Generator</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>🤣 Meme Generator</h1>
-  <div class="meme-container">
-    <img id="meme-image" src="https://i.imgflip.com/4/1bij.jpg" alt="Meme Template">
-    <input type="text" id="top-text" placeholder="Top Text">
-    <input type="text" id="bottom-text" placeholder="Bottom Text">
-    <button onclick="generateMeme()">Create Meme!</button>
+  <div class="container">
+    <h1>Meme Generator</h1>
+    <div class="meme-controls">
+      <div class="input-group">
+        <label for="top-text">Top Text</label>
+        <input type="text" id="top-text" placeholder="When you find out...">
+      </div>
+      <div class="input-group">
+        <label for="bottom-text">Bottom Text</label>
+        <input type="text" id="bottom-text" placeholder="...the code works">
+      </div>
+      <div class="input-group">
+        <label for="image-url">Image URL (or pick one below)</label>
+        <input type="text" id="image-url" placeholder="Paste image URL">
+      </div>
+      <button id="generate-btn">Generate Meme!</button>
+      <button id="download-btn">Download Meme ↓</button>
+    </div>
+    <div class="meme-templates">
+      <img src="https://i.imgflip.com/4/1bij.jpg" data-url="https://i.imgflip.com/4/1bij.jpg" alt="Drake Template">
+      <img src="https://i.imgflip.com/4/1bgw.jpg" data-url="https://i.imgflip.com/4/1bgw.jpg" alt="Distracted BF">
+    </div>
+    <div class="meme-result">
+      <canvas id="meme-canvas"></canvas>
+    </div>
   </div>
   <script src="script.js"></script>
 </body>

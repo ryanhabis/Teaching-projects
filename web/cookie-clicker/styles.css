@@ -1,0 +1,64 @@
+body {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background-color: #fff5e6;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: #d2691e;
+}
+
+#cookie-btn {
+  font-size: 100px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s;
+  margin: 20px 0;
+}
+
+#cookie-btn:active {
+  transform: scale(0.95);
+}
+
+.stats {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px 0;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.upgrades {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.upgrade {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  background: #ffd700;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.upgrade:hover {
+  background: #e6c200;
+}
+
+.upgrade:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
