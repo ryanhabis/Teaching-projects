@@ -1,41 +1,47 @@
 body {
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-  background-color: #fff5e6;
-  text-align: center;
+  font-family: 'Comic Sans MS', cursive, sans-serif; /* Fun, playful font */
+  background-color: #fff5e6; /* Light cookie-like background */
+  text-align: center; /* Center all text */
   margin: 0;
   padding: 20px;
 }
 
+/* Center the main container and set a max width */
 .container {
   max-width: 600px;
   margin: 0 auto;
 }
 
+/* Style the main title */
 h1 {
-  color: #d2691e;
+  color: #d2691e; /* Cookie brown color */
 }
 
+/* Style the main cookie button */
 #cookie-btn {
-  font-size: 100px;
+  font-size: 100px; /* Large cookie emoji */
   background: none;
   border: none;
   cursor: pointer;
-  transition: transform 0.1s;
+  transition: transform 0.1s; /* Button press animation */
   margin: 20px 0;
 }
 
+/* Add a press effect to the cookie button */
 #cookie-btn:active {
   transform: scale(0.95);
 }
 
+/* Style the stats panel (cookies and CPS) */
 .stats {
   background: white;
   padding: 10px;
   border-radius: 10px;
   margin: 10px 0;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  box-shadow: 0 0 5px rgba(0,0,0,0.1); /* Subtle shadow for depth */
 }
 
+/* Style the upgrades panel */
 .upgrades {
   background: white;
   padding: 15px;
@@ -43,21 +49,24 @@ h1 {
   margin-top: 20px;
 }
 
+/* Style each upgrade button */
 .upgrade {
   display: block;
   width: 100%;
   padding: 10px;
   margin: 5px 0;
-  background: #ffd700;
+  background: #ffd700; /* Gold color for upgrades */
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
+/* Change upgrade button color on hover */
 .upgrade:hover {
   background: #e6c200;
 }
 
+/* Style for disabled upgrade buttons */
 .upgrade:disabled {
   background: #ccc;
   cursor: not-allowed;

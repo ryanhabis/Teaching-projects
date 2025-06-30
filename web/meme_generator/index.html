@@ -4,35 +4,45 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🤣 Meme Generator</title>
+  <!-- Link to the main stylesheet for styling -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <h1>Meme Generator</h1>
+    <!-- Controls for entering meme text and image -->
     <div class="meme-controls">
       <div class="input-group">
         <label for="top-text">Top Text</label>
+        <!-- Input for the top meme text -->
         <input type="text" id="top-text" placeholder="When you find out...">
       </div>
       <div class="input-group">
         <label for="bottom-text">Bottom Text</label>
+        <!-- Input for the bottom meme text -->
         <input type="text" id="bottom-text" placeholder="...the code works">
       </div>
       <div class="input-group">
         <label for="image-url">Image URL (or pick one below)</label>
+        <!-- Input for a custom image URL -->
         <input type="text" id="image-url" placeholder="Paste image URL">
       </div>
+      <!-- Button to generate the meme on the canvas -->
       <button id="generate-btn">Generate Meme!</button>
+      <!-- Button to download the generated meme -->
       <button id="download-btn">Download Meme ↓</button>
     </div>
+    <!-- Meme template images for quick selection -->
     <div class="meme-templates">
       <img src="https://i.imgflip.com/4/1bij.jpg" data-url="https://i.imgflip.com/4/1bij.jpg" alt="Drake Template">
       <img src="https://i.imgflip.com/4/1bgw.jpg" data-url="https://i.imgflip.com/4/1bgw.jpg" alt="Distracted BF">
     </div>
+    <!-- Area where the generated meme will be displayed -->
     <div class="meme-result">
       <canvas id="meme-canvas"></canvas>
     </div>
   </div>
+  <!-- Link to the main JavaScript file for meme logic -->
   <script src="script.js"></script>
 </body>
 </html>

@@ -3,44 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🐶 Virtual Pet</title>
+  <title>Virtual Pet</title>
+  <!-- Link to the main stylesheet for styling -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <h1>Virtual Pet</h1>
+    <!-- Pet status bars for hunger, happiness, and energy -->
     <div id="pet-status">
       <div class="stat">
         <span>Hunger: </span>
+        <!-- Progress bar for hunger level -->
         <progress id="hunger" value="50" max="100"></progress>
       </div>
       <div class="stat">
         <span>Happiness: </span>
+        <!-- Progress bar for happiness level -->
         <progress id="happiness" value="50" max="100"></progress>
       </div>
       <div class="stat">
         <span>Energy: </span>
+        <!-- Progress bar for energy level -->
         <progress id="energy" value="50" max="100"></progress>
       </div>
     </div>
 
+    <!-- Container for the pet image and message -->
     <div id="pet-container">
       <img id="pet-image" src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Pet">
       <div id="pet-message">Hello! Take care of me!</div>
     </div>
 
+    <!-- Action buttons for interacting with the pet -->
     <div class="actions">
-      <button id="feed-btn">🍖 Feed</button>
-      <button id="play-btn">🎾 Play</button>
-      <button id="sleep-btn">💤 Sleep</button>
+      <button id="feed-btn">Feed</button>
+      <button id="play-btn">Play</button>
+      <button id="sleep-btn">Sleep</button>
     </div>
 
+    <!-- Game over screen, shown when the pet runs away -->
     <div id="game-over" class="hidden">
       <h2>GAME OVER</h2>
       <p>Your pet ran away!</p>
       <button id="restart-btn">Try Again</button>
     </div>
   </div>
+  <!-- Link to the main JavaScript file for game logic -->
   <script src="script.js"></script>
 </body>
 </html>

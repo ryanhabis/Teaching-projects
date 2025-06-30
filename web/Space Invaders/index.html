@@ -4,18 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Space Invaders</title>
+  <!-- Link to the main stylesheet for styling -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <h1>Space Invaders</h1>
+    <!-- Display game score and lives -->
     <div class="game-info">
       <span>Score: <span id="score">0</span></span>
       <span>Lives: <span id="lives">3</span></span>
     </div>
+    <!-- Canvas where the game is rendered -->
     <canvas id="gameCanvas" width="600" height="400"></canvas>
+    <!-- Button to start or restart the game -->
     <button id="start-btn">Start Game</button>
   </div>
+  <!-- Link to the main JavaScript file for game logic -->
   <script src="script.js"></script>
 </body>
 </html>

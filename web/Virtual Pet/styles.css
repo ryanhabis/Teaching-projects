@@ -1,11 +1,12 @@
 body {
   font-family: 'Comic Sans MS', cursive;
-  background-color: #f0f8ff;
+  background-color: #f0f8ff; /* Light blue background */
   text-align: center;
   margin: 0;
   padding: 20px;
 }
 
+/* Center the main container and add styling */
 .container {
   max-width: 500px;
   margin: 0 auto;
@@ -15,13 +16,15 @@ body {
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
+/* Style the pet image */
 #pet-image {
   width: 150px;
   height: 150px;
   margin: 20px 0;
-  transition: transform 0.3s;
+  transition: transform 0.3s; /* Smooth animation for play action */
 }
 
+/* Style for each stat row (hunger, happiness, energy) */
 .stat {
   margin: 10px 0;
   display: flex;
@@ -29,37 +32,45 @@ body {
   justify-content: center;
 }
 
+/* Style for progress bars */
 progress {
   width: 200px;
   height: 20px;
   margin-left: 10px;
 }
 
+/* Progress bar background (Webkit browsers) */
 progress[value]::-webkit-progress-bar {
   background-color: #eee;
   border-radius: 5px;
 }
 
+/* Progress bar value (Webkit browsers) */
 progress[value]::-webkit-progress-value {
   border-radius: 5px;
 }
 
+/* Custom color for hunger bar */
 #hunger::-webkit-progress-value {
-  background-color: #ff6347;
+  background-color: #ff6347; /* Tomato red */
 }
 
+/* Custom color for happiness bar */
 #happiness::-webkit-progress-value {
-  background-color: #ffd700;
+  background-color: #ffd700; /* Gold */
 }
 
+/* Custom color for energy bar */
 #energy::-webkit-progress-value {
-  background-color: #6495ed;
+  background-color: #6495ed; /* Cornflower blue */
 }
 
+/* Style for the actions button row */
 .actions {
   margin: 20px 0;
 }
 
+/* Style for all buttons */
 button {
   padding: 10px 20px;
   margin: 0 5px;
@@ -70,40 +81,48 @@ button {
   transition: transform 0.2s;
 }
 
+/* Button hover effect: slightly enlarge */
 button:hover {
   transform: scale(1.05);
 }
 
+/* Button active effect: slightly shrink */
 button:active {
   transform: scale(0.95);
 }
 
+/* Feed button: red background */
 #feed-btn {
   background-color: #ff6347;
   color: white;
 }
 
+/* Play button: gold background */
 #play-btn {
   background-color: #ffd700;
 }
 
+/* Sleep button: blue background */
 #sleep-btn {
   background-color: #6495ed;
   color: white;
 }
 
+/* Style for the pet message area */
 #pet-message {
   margin: 10px 0;
   font-size: 18px;
   min-height: 24px;
 }
 
+/* Utility class to hide elements */
 .hidden {
   display: none;
 }
 
+/* Style for the game over overlay screen */
 #game-over {
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0,0,0,0.8); /* Semi-transparent black overlay */
   color: white;
   position: fixed;
   top: 0;
@@ -114,5 +133,5 @@ button:active {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 100;
+  z-index: 100; /* Ensure overlay is on top */
 }

@@ -4,26 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🍪 Cookie Clicker!</title>
+  <!-- Link to the external stylesheet for styling -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <h1>Cookie Clicker</h1>
     <div class="stats">
+      <!-- Display the current number of cookies -->
       <p>Cookies: <span id="cookies">0</span></p>
+      <!-- Display cookies earned per second -->
       <p>Per Second: <span id="cps">0</span></p>
     </div>
+    <!-- Main cookie button for clicking -->
     <button id="cookie-btn">🍪</button>
     <div class="upgrades">
       <h2>Upgrades</h2>
+      <!-- Upgrade button: Grandma, increases CPS by 1, costs 10 cookies -->
       <button class="upgrade" data-cost="10" data-cps="1">
         Grandma 👵 (+1 CPS) - Cost: 10 cookies
       </button>
+      <!-- Upgrade button: Oven, increases CPS by 2, costs 50 cookies -->
       <button class="upgrade" data-cost="50" data-cps="2">
         Oven 🏭 (+2 CPS) - Cost: 50 cookies
       </button>
     </div>
   </div>
+  <!-- Link to the main JavaScript file for game logic -->
   <script src="script.js"></script>
 </body>
 </html>

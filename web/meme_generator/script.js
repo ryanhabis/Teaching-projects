@@ -1,11 +1,11 @@
 // DOM Elements
-const topTextInput = document.getElementById('top-text');
-const bottomTextInput = document.getElementById('bottom-text');
-const imageUrlInput = document.getElementById('image-url');
-const generateBtn = document.getElementById('generate-btn');
-const downloadBtn = document.getElementById('download-btn');
-const canvas = document.getElementById('meme-canvas');
-const templateImages = document.querySelectorAll('.meme-templates img');
+const topTextInput = document.getElementById('top-text'); // Input for top meme text
+const bottomTextInput = document.getElementById('bottom-text'); // Input for bottom meme text
+const imageUrlInput = document.getElementById('image-url'); // Input for custom image URL
+const generateBtn = document.getElementById('generate-btn'); // Button to generate meme
+const downloadBtn = document.getElementById('download-btn'); // Button to download meme
+const canvas = document.getElementById('meme-canvas'); // Canvas to draw meme
+const templateImages = document.querySelectorAll('.meme-templates img'); // Meme template thumbnails
 
 // Set canvas size
 canvas.width = 500;
@@ -13,7 +13,7 @@ canvas.height = 500;
 
 // Load image and draw meme
 function generateMeme() {
-  const imageUrl = imageUrlInput.value || 'https://i.imgflip.com/4/1bij.jpg';
+  const imageUrl = imageUrlInput.value || 'https://i.imgflip.com/4/1bij.jpg'; // Use input or default image
   const topText = topTextInput.value;
   const bottomText = bottomTextInput.value;
 
@@ -28,18 +28,18 @@ function generateMeme() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 
-    // Text styling
+    // Text styling for meme text
     ctx.fillStyle = 'white';
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 3;
     ctx.font = '36px Impact';
     ctx.textAlign = 'center';
 
-    // Top text
+    // Draw top text
     ctx.fillText(topText, canvas.width / 2, 50);
     ctx.strokeText(topText, canvas.width / 2, 50);
 
-    // Bottom text
+    // Draw bottom text
     ctx.fillText(bottomText, canvas.width / 2, canvas.height - 30);
     ctx.strokeText(bottomText, canvas.width / 2, canvas.height - 30);
   };
@@ -48,21 +48,21 @@ function generateMeme() {
 // Download meme as image
 function downloadMeme() {
   const link = document.createElement('a');
-  link.download = 'my-meme.png';
-  link.href = canvas.toDataURL('image/png');
-  link.click();
+  link.download = 'my-meme.png'; // Set download filename
+  link.href = canvas.toDataURL('image/png'); // Get image data from canvas
+  link.click(); // Trigger download
 }
 
-// Template selection
+// Template selection: clicking a template sets the image URL input
 templateImages.forEach(img => {
   img.addEventListener('click', () => {
     imageUrlInput.value = img.dataset.url;
   });
 });
 
-// Event listeners
+// Event listeners for generate and download buttons
 generateBtn.addEventListener('click', generateMeme);
 downloadBtn.addEventListener('click', downloadMeme);
 
-// Generate default meme on load
+// Generate default meme on page load
 generateMeme();

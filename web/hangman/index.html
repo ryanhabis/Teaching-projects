@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hangman Game</title>
+  <!-- Link to the main stylesheet for styling -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <h1>Hangman</h1>
+    <!-- Hangman drawing area (ASCII art updates as player guesses) -->
     <div id="hangman-display">
       <pre id="hangman-drawing">  
   +---+
@@ -19,13 +21,20 @@
       |
 =========</pre>
     </div>
+    <!-- Display the word with underscores and revealed letters -->
     <div id="word-display"></div>
+    <!-- Show how many guesses the player has left -->
     <div id="guesses-left">Guesses left: <span>6</span></div>
+    <!-- Show the letters the player has already guessed -->
     <div id="used-letters">Used letters: <span></span></div>
+    <!-- Area for win/lose messages -->
     <div id="message"></div>
+    <!-- On-screen keyboard for letter input -->
     <div id="keyboard"></div>
+    <!-- Button to start a new game -->
     <button id="reset-btn">New Game</button>
   </div>
+  <!-- Link to the main JavaScript file for game logic -->
   <script src="script.js"></script>
 </body>
 </html>

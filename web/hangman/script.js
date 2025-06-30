@@ -1,20 +1,20 @@
 // Game state
-const words = ["JAVASCRIPT", "HANGMAN", "DEVELOPER", "KEYBOARD", "FUNCTION"];
-let selectedWord = "";
-let guessedLetters = [];
-let wrongGuesses = 0;
-const maxWrongGuesses = 6;
+const words = ["JAVASCRIPT", "HANGMAN", "DEVELOPER", "KEYBOARD", "FUNCTION"]; // List of possible words
+let selectedWord = ""; // The word to guess
+let guessedLetters = []; // Array of guessed letters
+let wrongGuesses = 0; // Number of incorrect guesses
+const maxWrongGuesses = 6; // Maximum allowed wrong guesses
 
 // DOM elements
-const wordDisplay = document.getElementById("word-display");
-const hangmanDrawing = document.getElementById("hangman-drawing");
-const guessesLeftSpan = document.querySelector("#guesses-left span");
-const usedLettersSpan = document.querySelector("#used-letters span");
-const messageDiv = document.getElementById("message");
-const keyboardDiv = document.getElementById("keyboard");
-const resetBtn = document.getElementById("reset-btn");
+const wordDisplay = document.getElementById("word-display"); // Shows the word with underscores and letters
+const hangmanDrawing = document.getElementById("hangman-drawing"); // Shows ASCII hangman drawing
+const guessesLeftSpan = document.querySelector("#guesses-left span"); // Shows remaining guesses
+const usedLettersSpan = document.querySelector("#used-letters span"); // Shows used letters
+const messageDiv = document.getElementById("message"); // Shows win/lose message
+const keyboardDiv = document.getElementById("keyboard"); // On-screen keyboard
+const resetBtn = document.getElementById("reset-btn"); // New Game button
 
-// Hangman drawings for each wrong guess
+// Hangman drawings for each wrong guess (ASCII art)
 const hangmanDrawings = [
   `  
   +---+
@@ -74,9 +74,9 @@ const hangmanDrawings = [
 =========`
 ];
 
-// Initialize game
+// Initialize game state and UI for a new game
 function initGame() {
-  selectedWord = words[Math.floor(Math.random() * words.length)];
+  selectedWord = words[Math.floor(Math.random() * words.length)]; // Pick a random word
   guessedLetters = [];
   wrongGuesses = 0;
   messageDiv.textContent = "";
@@ -85,7 +85,7 @@ function initGame() {
   usedLettersSpan.textContent = "";
   hangmanDrawing.textContent = hangmanDrawings[0];
   
-  // Create keyboard
+  // Create the on-screen keyboard (A-Z)
   keyboardDiv.innerHTML = "";
   for (let i = 65; i <= 90; i++) {
     const letter = String.fromCharCode(i);
@@ -108,7 +108,7 @@ function updateWordDisplay() {
   
   wordDisplay.textContent = display;
   
-  // Check if player won
+  // Check if player won (no underscores left)
   if (!display.includes("_")) {
     messageDiv.textContent = "You won! 🎉";
     messageDiv.className = "correct";
@@ -116,16 +116,19 @@ function updateWordDisplay() {
   }
 }
 
-// Handle a letter guess
+// Handle a letter guess from the player
 function handleGuess(letter) {
+  // Ignore if already guessed or game is over
   if (guessedLetters.includes(letter) || wrongGuesses >= maxWrongGuesses) return;
   
   guessedLetters.push(letter);
   usedLettersSpan.textContent = guessedLetters.join(", ");
   
   if (selectedWord.includes(letter)) {
+    // Correct guess, update the word display
     updateWordDisplay();
   } else {
+    // Wrong guess, update hangman and guesses left
     wrongGuesses++;
     guessesLeftSpan.textContent = maxWrongGuesses - wrongGuesses;
     hangmanDrawing.textContent = hangmanDrawings[wrongGuesses];
@@ -137,7 +140,7 @@ function handleGuess(letter) {
     }
   }
   
-  // Disable the guessed button
+  // Disable the guessed button and color it based on correctness
   const buttons = document.querySelectorAll(".letter-btn");
   buttons.forEach(btn => {
     if (btn.textContent === letter) {
@@ -147,7 +150,7 @@ function handleGuess(letter) {
   });
 }
 
-// Disable all keyboard buttons
+// Disable all keyboard buttons (after win/lose)
 function disableKeyboard() {
   const buttons = document.querySelectorAll(".letter-btn");
   buttons.forEach(btn => {
@@ -155,8 +158,8 @@ function disableKeyboard() {
   });
 }
 
-// Event listener for reset button
+// Event listener for reset button to start a new game
 resetBtn.addEventListener("click", initGame);
 
-// Start the game
+// Start the game on page load
 initGame();

@@ -49,19 +49,17 @@ body {
   transition: background 0.2s;
 }
 
-.letter-btn:hover {
-  background-color: #d0d0d0;
-}
-
+/* Disabled letter button style: gray background, white text, not clickable */
 .letter-btn:disabled {
   background-color: #a0a0a0;
   color: white;
   cursor: not-allowed;
 }
 
+/* Style for the reset (New Game) button */
 #reset-btn {
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #4CAF50; /* Green background */
   color: white;
   border: none;
   border-radius: 5px;
@@ -70,18 +68,21 @@ body {
   margin-top: 20px;
 }
 
+/* Hover effect for the reset button */
 #reset-btn:hover {
   background-color: #45a049;
 }
 
+/* Style for the win/lose message area */
 #message {
   font-size: 24px;
   font-weight: bold;
   min-height: 30px;
   margin: 10px 0;
-  color: #d32f2f;
+  color: #d32f2f; /* Red color for lose message */
 }
 
+/* Style for correct (win) message */
 .correct {
-  color: #4CAF50;
+  color: #4CAF50; /* Green color for win message */
 }

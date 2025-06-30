@@ -1,47 +1,49 @@
-// Game elements
+// === DOM Elements and Game Setup ===
+
+// Get references to canvas and UI elements
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 const scoreElement = document.getElementById('score');
 const livesElement = document.getElementById('lives');
 const startBtn = document.getElementById('start-btn');
 
-// Game state
-let score = 0;
-let lives = 3;
-let gameRunning = false;
-let animationId;
+// === Game State Variables ===
+let score = 0;           // Player's score
+let lives = 3;           // Player's remaining lives
+let gameRunning = false; // Is the game currently running?
+let animationId;         // Stores the animation frame ID for the game loop
 
-// Player
+// === Player Object ===
 const player = {
-  x: canvas.width / 2 - 25,
-  y: canvas.height - 50,
-  width: 50,
-  height: 30,
-  speed: 5,
-  color: '#00ff00'
+  x: canvas.width / 2 - 25, // Player's starting X position
+  y: canvas.height - 50,    // Player's starting Y position
+  width: 50,                // Player width
+  height: 30,               // Player height
+  speed: 5,                 // Player movement speed
+  color: '#00ff00'          // Player color (green)
 };
 
-// Bullets
-const bullets = [];
-const bulletSpeed = 7;
-const bulletSize = 5;
+// === Bullets ===
+const bullets = [];         // Array to hold active bullets
+const bulletSpeed = 7;      // Speed of bullets
+const bulletSize = 5;       // Size of each bullet
 
-// Aliens
-const aliens = [];
-const alienWidth = 40;
-const alienHeight = 30;
-let alienDirection = 1;
-let alienSpeed = 1;
-let alienDropDistance = 20;
+// === Aliens ===
+const aliens = [];          // Array to hold alien objects
+const alienWidth = 40;      // Width of each alien
+const alienHeight = 30;     // Height of each alien
+let alienDirection = 1;     // 1 for right, -1 for left
+let alienSpeed = 1;         // Speed of alien movement
+let alienDropDistance = 20; // How far aliens drop when hitting edge
 
-// Initialize game
+// === Initialize Game State ===
 function initGame() {
   score = 0;
   lives = 3;
   scoreElement.textContent = score;
   livesElement.textContent = lives;
   
-  // Create aliens
+  // Create aliens in a grid (4 rows x 8 columns)
   aliens.length = 0;
   for (let row = 0; row < 4; row++) {
     for (let col = 0; col < 8; col++) {
@@ -50,13 +52,15 @@ function initGame() {
         y: row * (alienHeight + 20) + 50,
         width: alienWidth,
         height: alienHeight,
-        color: row % 2 === 0 ? '#ff00ff' : '#ffff00'
+        color: row % 2 === 0 ? '#ff00ff' : '#ffff00' // Alternate colors
       });
     }
   }
 }
 
-// Draw player
+// === Drawing Functions ===
+
+// Draw the player spaceship
 function drawPlayer() {
   ctx.fillStyle = player.color;
   ctx.fillRect(player.x, player.y, player.width, player.height);
@@ -66,7 +70,7 @@ function drawPlayer() {
   ctx.fillRect(player.x + 10, player.y - 5, 30, 5);
 }
 
-// Draw bullets
+// Draw all active bullets
 function drawBullets() {
   ctx.fillStyle = '#ff0000';
   bullets.forEach(bullet => {
@@ -74,7 +78,7 @@ function drawBullets() {
   });
 }
 
-// Draw aliens
+// Draw all aliens
 function drawAliens() {
   aliens.forEach(alien => {
     ctx.fillStyle = alien.color;
@@ -82,7 +86,9 @@ function drawAliens() {
   });
 }
 
-// Move player
+// === Player Movement ===
+
+// Move the player left or right, ensuring they stay within canvas bounds
 function movePlayer(direction) {
   if (direction === 'left' && player.x > 0) {
     player.x -= player.speed;
@@ -91,7 +97,9 @@ function movePlayer(direction) {
   }
 }
 
-// Fire bullet
+// === Bullet Logic ===
+
+// Fire a new bullet from the player's current position
 function fireBullet() {
   bullets.push({
     x: player.x + player.width / 2 - bulletSize / 2,
@@ -101,7 +109,7 @@ function fireBullet() {
   });
 }
 
-// Update bullets
+// Update bullet positions and handle collisions with aliens
 function updateBullets() {
   for (let i = bullets.length - 1; i >= 0; i--) {
     bullets[i].y -= bulletSpeed;
@@ -112,12 +120,12 @@ function updateBullets() {
       continue;
     }
     
-    // Check for alien hits
+    // Check for collisions with aliens
     for (let j = aliens.length - 1; j >= 0; j--) {
       if (checkCollision(bullets[i], aliens[j])) {
-        bullets.splice(i, 1);
-        aliens.splice(j, 1);
-        score += 10;
+        bullets.splice(i, 1); // Remove bullet
+        aliens.splice(j, 1);  // Remove alien
+        score += 10;          // Increase score
         scoreElement.textContent = score;
         break;
       }
@@ -125,30 +133,32 @@ function updateBullets() {
   }
 }
 
-// Move aliens
+// === Alien Logic ===
+
+// Move aliens horizontally, drop down if they hit the edge, and check for game over
 function moveAliens() {
   let moveDown = false;
   let hitEdge = false;
   
-  // Check if any alien has hit the edge
+  // Check if any alien has hit the edge of the canvas
   aliens.forEach(alien => {
     if ((alien.x <= 0 && alienDirection === -1) || 
         (alien.x + alien.width >= canvas.width && alienDirection === 1)) {
       hitEdge = true;
     }
     
-    // Check if aliens reached bottom
+    // If any alien reaches the player's level, game over
     if (alien.y + alien.height >= player.y) {
       gameOver();
     }
   });
   
   if (hitEdge) {
-    alienDirection *= -1;
-    moveDown = true;
+    alienDirection *= -1; // Change direction
+    moveDown = true;      // Flag to move aliens down
   }
   
-  // Move aliens
+  // Move aliens horizontally and drop down if needed
   aliens.forEach(alien => {
     alien.x += alienSpeed * alienDirection;
     if (moveDown) {
@@ -157,7 +167,9 @@ function moveAliens() {
   });
 }
 
-// Check collision between two objects
+// === Collision Detection ===
+
+// Check if two objects (rectangles) overlap
 function checkCollision(obj1, obj2) {
   return obj1.x < obj2.x + obj2.width &&
          obj1.x + obj1.width > obj2.x &&
@@ -165,14 +177,18 @@ function checkCollision(obj1, obj2) {
          obj1.y + obj1.height > obj2.y;
 }
 
-// Game over
+// === Game Over Logic ===
+
+// Display game over screen and stop the game loop
 function gameOver() {
   gameRunning = false;
   cancelAnimationFrame(animationId);
   
+  // Draw semi-transparent overlay
   ctx.fillStyle = 'rgba(0, 0, 0, 0.75)';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   
+  // Draw "GAME OVER" text and final score
   ctx.fillStyle = '#ff0000';
   ctx.font = '36px "Press Start 2P"';
   ctx.textAlign = 'center';
@@ -180,14 +196,16 @@ function gameOver() {
   ctx.font = '18px "Press Start 2P"';
   ctx.fillText(`Final Score: ${score}`, canvas.width / 2, canvas.height / 2 + 40);
   
-  startBtn.style.display = 'block';
+  startBtn.style.display = 'block'; // Show the start button to play again
 }
 
-// Game loop
+// === Main Game Loop ===
+
+// The main animation loop: updates and draws all game elements
 function gameLoop() {
   if (!gameRunning) return;
   
-  // Clear canvas
+  // Clear the canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
   // Update game elements
@@ -199,7 +217,7 @@ function gameLoop() {
   drawBullets();
   drawAliens();
   
-  // Check win condition
+  // Check win condition: all aliens destroyed
   if (aliens.length === 0) {
     ctx.fillStyle = '#00ff00';
     ctx.font = '36px "Press Start 2P"';
@@ -211,16 +229,20 @@ function gameLoop() {
     return;
   }
   
+  // Request the next animation frame
   animationId = requestAnimationFrame(gameLoop);
 }
 
-// Keyboard controls
+// === Keyboard Controls ===
+
+// Object to track which keys are pressed
 const keys = {
   ArrowLeft: false,
   ArrowRight: false,
   space: false
 };
 
+// Listen for keydown events to move player or fire bullets
 window.addEventListener('keydown', (e) => {
   if (e.code === 'ArrowLeft') keys.ArrowLeft = true;
   if (e.code === 'ArrowRight') keys.ArrowRight = true;
@@ -230,30 +252,33 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
+// Listen for keyup events to stop player movement or firing
 window.addEventListener('keyup', (e) => {
   if (e.code === 'ArrowLeft') keys.ArrowLeft = false;
   if (e.code === 'ArrowRight') keys.ArrowRight = false;
   if (e.code === 'Space') keys.space = false;
 });
 
-// Handle player movement
+// Handle player movement based on pressed keys
 function handlePlayerMovement() {
   if (keys.ArrowLeft) movePlayer('left');
   if (keys.ArrowRight) movePlayer('right');
 }
 
-// Start game
+// === Game Start and Loop Control ===
+
+// Start game when the start button is clicked
 startBtn.addEventListener('click', () => {
-  initGame();
-  gameRunning = true;
-  startBtn.style.display = 'none';
-  gameLoop();
+  initGame(); // Reset game state
+  gameRunning = true; // Set game as running
+  startBtn.style.display = 'none'; // Hide the start button
+  gameLoop(); // Begin the main game loop
 });
 
-// Movement interval
+// Movement interval for smooth player movement (runs every ~16ms)
 setInterval(() => {
   if (gameRunning) handlePlayerMovement();
 }, 16);
 
-// Initialize (but don't start)
+// Initialize game state and draw initial screen (but don't start)
 initGame();
