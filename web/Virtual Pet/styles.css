@@ -1,0 +1,118 @@
+body {
+  font-family: 'Comic Sans MS', cursive;
+  background-color: #f0f8ff;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#pet-image {
+  width: 150px;
+  height: 150px;
+  margin: 20px 0;
+  transition: transform 0.3s;
+}
+
+.stat {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+progress {
+  width: 200px;
+  height: 20px;
+  margin-left: 10px;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 5px;
+}
+
+progress[value]::-webkit-progress-value {
+  border-radius: 5px;
+}
+
+#hunger::-webkit-progress-value {
+  background-color: #ff6347;
+}
+
+#happiness::-webkit-progress-value {
+  background-color: #ffd700;
+}
+
+#energy::-webkit-progress-value {
+  background-color: #6495ed;
+}
+
+.actions {
+  margin: 20px 0;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 0 5px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+#feed-btn {
+  background-color: #ff6347;
+  color: white;
+}
+
+#play-btn {
+  background-color: #ffd700;
+}
+
+#sleep-btn {
+  background-color: #6495ed;
+  color: white;
+}
+
+#pet-message {
+  margin: 10px 0;
+  font-size: 18px;
+  min-height: 24px;
+}
+
+.hidden {
+  display: none;
+}
+
+#game-over {
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}

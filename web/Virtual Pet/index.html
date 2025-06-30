@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🐶 Virtual Pet</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Virtual Pet</h1>
+    <div id="pet-status">
+      <div class="stat">
+        <span>Hunger: </span>
+        <progress id="hunger" value="50" max="100"></progress>
+      </div>
+      <div class="stat">
+        <span>Happiness: </span>
+        <progress id="happiness" value="50" max="100"></progress>
+      </div>
+      <div class="stat">
+        <span>Energy: </span>
+        <progress id="energy" value="50" max="100"></progress>
+      </div>
+    </div>
+
+    <div id="pet-container">
+      <img id="pet-image" src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Pet">
+      <div id="pet-message">Hello! Take care of me!</div>
+    </div>
+
+    <div class="actions">
+      <button id="feed-btn">🍖 Feed</button>
+      <button id="play-btn">🎾 Play</button>
+      <button id="sleep-btn">💤 Sleep</button>
+    </div>
+
+    <div id="game-over" class="hidden">
+      <h2>GAME OVER</h2>
+      <p>Your pet ran away!</p>
+      <button id="restart-btn">Try Again</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
