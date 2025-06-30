@@ -1,6 +1,6 @@
-# 🚀 Fun Coding Projects for Kids  
+# 🚀 Coding Projects
 **Web Development (HTML/CSS/JS) & JavaScript Games**  
-*A collection of engaging, hands-on projects to teach kids coding in a fun way!*  
+*A collection of engaging, hands-on projects to teach coding in a fun way!*  
 
 ---
 
